@@ -18,7 +18,7 @@ header {
     min-height: 500px;
     max-height: 1280px;
     margin: 0px 0px;
-    background-image: url("../backdrop.jpg");
+    background-image: url("../images/backdrop.jpg");
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -116,10 +116,20 @@ div#cards {
     height: 400px;
     box-shadow: 0px 10px 20px 2px rgb(52, 83, 110);
     transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card p {
+    cursor: text;
 }
 
 .card-preview {
     display: block;
+}
+
+.card-preview img {
+    object-fit: contain;
+    height: 232px;
 }
 
 .card-content{
