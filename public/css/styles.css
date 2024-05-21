@@ -102,7 +102,7 @@ section h2 {
 
 #navigation ul a:hover {
     transition: .1s;
-    background-color: rgb(200, 229, 255);
+    background-color: rgb(206, 232, 255);
     color: crimson;
 }
 

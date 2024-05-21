@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	portalMusic.onplay = () => {
 		playAnchor.querySelector("span#play").classList.add("active");
 		playAnchor.querySelector("span#pause").classList.remove("active");
+		
 	}
 
 	playAnchor.onclick = (e) => {
@@ -31,8 +32,23 @@ document.addEventListener("DOMContentLoaded", () => {
 		if (portalMusic.paused) {
 			portalMusic.play();
 		} else {
+			console.log("bruh");
 			portalMusic.pause();
+			console.log("bruh paused?");
 		}
+	}
+
+	
+	if (portalMusic.paused) {
+		playAnchor.querySelector("span#pause").classList.add("active");
+		playAnchor.querySelector("span#play").classList.remove("active");
+		document.onclick = () => {
+			portalMusic.play();
+			document.onclick = () => { };
+		}
+	} else {
+		playAnchor.querySelector("span#play").classList.add("active");
+		playAnchor.querySelector("span#pause").classList.remove("active");
 	}
 
 	document.querySelectorAll("a").forEach(anchor => {
@@ -96,11 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 	});
-
-	document.onclick = () => {
-		portalMusic.play();
-		document.onclick = () => { };
-	}
 
 	mobileMenuClose.onclick = () => {
 		restartCardflip();
