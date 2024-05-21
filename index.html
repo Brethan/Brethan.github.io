@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header>
+    <header data-bg="./public/images/backdrop.jpg">
         <button id="menu-button" type="button" value="">
             <i class="fa fa-bars"></i>
         </button>
@@ -26,6 +26,11 @@
                     <li><a href="https://google.com/search?q=shrek+3">Shrek III</a></li>
                     <li><a href="https://google.com/search?q=shrek+4">Shrek IV</a></li>
                     <li><a href="https://google.com/search?q=shrek+5">Shrek V</a></li>
+                    <li>
+                        <a href="" id="play-pause">
+                            <span id="play" class="active">Play</span> / <span id="pause">Pause</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -36,10 +41,13 @@
         </div>
     </header>
     <section id="deck">
+        <h2>Guh</h2>
         <div id="cards">
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -56,7 +64,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -73,7 +83,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -90,7 +102,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -107,7 +121,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/eliv.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/eliv-small.png)">
+                        <img loading="lazy" src="./public/images/eliv.png" alt="">
+                    </div>
                     <p>The Evil Variant of the popular AI V-Tuber Neuro-sama!<br>
                         The Neuro twins were created by AI developer Vedal987 <br>
                         <br>
@@ -124,7 +140,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -141,7 +159,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -158,7 +178,9 @@
             </div>
             <div class="card">
                 <div class="card-preview">
-                    <img src="./public/images/card1.png" alt="">
+                    <div class="blur-load" style="background-image: url(./public/images/card1-small.png)">
+                        <img loading="lazy"  src="./public/images/card1.png" alt="">
+                    </div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit provident facere assumenda labore
                         aperiam, magnam voluptate eos fuga dolorum aliquam.</p>
                 </div>
@@ -175,94 +197,16 @@
             </div>
         </div>
     </section>
-    <audio autoplay id="portal" preload="auto" loop="true">
+    <audio autoplay id="portal" preload="auto" loop>
         <source src="./public/sound/portal.mp3" type="audio/mp3">
     </audio>
 
     <audio id="cardflip" preload="auto">
         <source src="./public/sound/pageturn.mp3" type="audio/mp3">
     </audio>
+
+    <script src="./public/javascript/index.js"></script>
 </body>
 
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const button = document.getElementById("menu-button");
-        const wrapper = document.getElementById("wrapper");
-        const mobileMenuClose = document.getElementById("mobile-menu-close");
-        const cardflip = document.getElementById("cardflip");
-
-        document.querySelectorAll("a").forEach(anchor => {
-            const target = document.getElementById(anchor.getAttribute("href").replace(/\#/, ""));
-            if (!target)
-                return;
-
-            anchor.onclick = (e) => {
-                e.preventDefault();
-                wrapper.classList.remove(...wrapper.classList)
-                document.body.classList.remove(...document.body.classList)
-                target.scrollIntoView({ behavior: "smooth" });
-            }
-        });
-
-
-
-        document.querySelectorAll(".card").forEach(c => {
-            // Keep the text for the 
-            c.querySelectorAll("p").forEach(p => {
-                p.onclick = (e) => {
-                    e.stopPropagation();
-                }
-            })
-
-            const removeFlip = () => {
-                c.classList.remove("flipped");
-                cardflip.load();
-                cardflip.play();
-                c.querySelector(".card-preview").style.display = "block";
-                c.querySelector(".card-content").style.display = "none";
-            }
-
-
-
-            c.onclick = () => {
-                if (c.classList.contains("flipped")) {
-                    removeFlip();
-                } else {
-                    c.classList.add("flipped");
-                    cardflip.load();
-                    cardflip.play();
-                    c.querySelector(".card-preview").style.display = "none";
-                    c.querySelector(".card-content").style.display = "block";
-                }
-            }
-        });
-
-        document.onclick = () => {
-            const audio = document.getElementById("portal");
-            audio.play();
-            document.onclick = () => { };
-        }
-
-        mobileMenuClose.onclick = () => {
-            cardflip.load();
-            cardflip.play();
-            wrapper.classList.add("animated");
-        }
-
-        wrapper.onanimationend = () => {
-            if (wrapper.classList.contains("animated")) {
-                wrapper.classList.remove(...wrapper.classList)
-                document.body.classList.remove(...document.body.classList)
-            }
-        }
-
-        button.onclick = () => {
-            cardflip.load();
-            cardflip.play();
-            wrapper.classList.add("active");
-            document.body.classList.add("active")
-        }
-    })
-</script>
 
 </html>
